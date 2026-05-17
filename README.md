@@ -42,8 +42,8 @@ Instancia EC2 de Félix Rojas
 
 1. Tener 3 instancias EC2 con los puertos mencionados en el mapa de instancias configurados correctamente. (en el caso de MySQL sólo se necesita el 3306, puesto a que este es el puerto predilecto para bases de datos de este tipo, 3307 en adelante son los puertos que utiliza el servidor de manera interna para evitar que aparezcan errores sobre ocupación de puertos.)
 2. Una vez dentro de los servidores, se debe ejecutar un comando para cada instancia:
-- Instancia A: 'git clone https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack/tree/main/InstanciaA'
-- Instancia B: 'git clone https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack/tree/main/InstanciaB'
+- Instancia A: `git clone https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack/tree/main/InstanciaA`
+- Instancia B: `git clone https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack/tree/main/InstanciaB`
 
 3. Una vez se hayan descargado los microservicios correspondientes para cada instancia, se debe navegar hasta la carpeta de cada microservicio, y una vez estando a la misma altura que los archivos docker-compose.yml, se debe ejecutar el comando docker compose up -d.
 
