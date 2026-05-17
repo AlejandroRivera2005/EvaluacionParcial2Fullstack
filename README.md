@@ -5,13 +5,22 @@
 - Félix Rojas
 - Tomás Gaete
 
-## Estado del Sistema (Hito 1.5)
+## Estado del Sistema
 Instancia EC2 de Alejandro Rivera
-| Microservicio  | Puerto | DB Name  | Funcionalidad (cruds) |
+| Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
-| Soporte        | 8080   | auth_db  | Soporte técnico       |
-| Pagos          | 8081   | [DB]     | Métodos de pago       |
-| Ofertastrabajo | 8082   | [DB]     | Ofertas laborales     |
+| Soporte        | 8080   | 3306     | Soporte técnico       |
+| Pagos          | 8081   | 3307     | Métodos de pago       |
+| Ofertastrabajo | 8082   | 3308     | Ofertas laborales     |
+
+Instancia EC2 de Tomás Gaete
+| Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
+| :------------- | :----- | :------- | :-------------------- |
+| Soporte        | 8080   | 3306     | Soporte técnico       |
+| Pagos          | 8081   | 3307     | Métodos de pago       |
+| Ofertastrabajo | 8082   | 3308     | Ofertas laborales     |
+| Ofertastrabajo | 8082   | 3308     | Ofertas laborales     |
+
 
 
 ## Despliegue Técnico
