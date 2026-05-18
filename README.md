@@ -60,7 +60,7 @@ Instancia C EC2 de Félix Rojas
 -permisos de usuario: `sudo usermod -aG docker ubuntu`
   
 
-5. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
+4. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
 
 (EXTRA) En caso de desear tener todos los microservicios en una única instancia, se deberán configurar los puertos para ser usados de este modo, debido a que este proyecto se desarrolló en torno a 3 instancias con los microservicios repartidos dentro de estas.
 
