@@ -51,11 +51,13 @@ Instancia C EC2 de Félix Rojas
 - Instancia C: `git clone --depth 1 --sparse --filter=blob:none https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack.git && cd EvaluacionParcial2Fullstack && git sparse-checkout set InstanciaC`
 
 3. Una vez se hayan descargado los microservicios correspondientes para cada instancia, se debe navegar hasta la carpeta de cada microservicio, y una vez estando a la misma altura que los archivos docker-compose.yml, se debe ejecutar el comando docker compose up -d. (se debe tener la dependencia de docker-compose en la instancia, de lo contrario el comando no funcionará).
-  3a. para poder ejecutar el comando de docker compose, se debe instalar la dependencia y configurar permisos previamente con estos comandos:
+
+
+3a. para poder ejecutar el comando de docker compose, se debe instalar la dependencia y configurar permisos previamente con estos comandos:
    
-  instalar: `sudo apt install docker.io docker-compose-v2 -y`
+-instalar: `sudo apt install docker.io docker-compose-v2 -y`
   
-  permisos de usuario: `sudo usermod -aG docker ubuntu`
+-permisos de usuario: `sudo usermod -aG docker ubuntu`
   
 
 5. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
