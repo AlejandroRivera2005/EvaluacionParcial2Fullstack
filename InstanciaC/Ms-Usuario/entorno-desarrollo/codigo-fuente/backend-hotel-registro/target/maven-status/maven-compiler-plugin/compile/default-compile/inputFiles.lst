@@ -1,0 +1,12 @@
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/BackendHotelRegistroApplication.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Controller/UsuarioController.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Exception/GlobalExceptionHandler.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Exception/RecursoNoEncontradoException.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Exception/ServicioNoDisponibleException.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Model/Usuario.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Repository/UsuarioRepository.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/Service/UsuarioService.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/client/HabitacionesClient.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/dto/HabitacionDto.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/dto/UsuarioCreateDTO.java
+/app/backend-hotel-registro/src/main/java/cl/duoc/backend_hotel_registro/dto/Usuariodto.java

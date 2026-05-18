@@ -1,0 +1,12 @@
+cl/duoc/backend_hotel_registro/Repository/UsuarioRepository.class
+cl/duoc/backend_hotel_registro/Controller/UsuarioController.class
+cl/duoc/backend_hotel_registro/Model/Usuario.class
+cl/duoc/backend_hotel_registro/Exception/ServicioNoDisponibleException.class
+cl/duoc/backend_hotel_registro/Exception/GlobalExceptionHandler.class
+cl/duoc/backend_hotel_registro/Service/UsuarioService.class
+cl/duoc/backend_hotel_registro/dto/Usuariodto.class
+cl/duoc/backend_hotel_registro/client/HabitacionesClient.class
+cl/duoc/backend_hotel_registro/dto/UsuarioCreateDTO.class
+cl/duoc/backend_hotel_registro/dto/HabitacionDto.class
+cl/duoc/backend_hotel_registro/BackendHotelRegistroApplication.class
+cl/duoc/backend_hotel_registro/Exception/RecursoNoEncontradoException.class
