@@ -50,9 +50,15 @@ Instancia C EC2 de Félix Rojas
 - Instancia B: `git clone --depth 1 --sparse --filter=blob:none https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack.git && cd EvaluacionParcial2Fullstack && git sparse-checkout set InstanciaB`
 - Instancia C: `git clone --depth 1 --sparse --filter=blob:none https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack.git && cd EvaluacionParcial2Fullstack && git sparse-checkout set InstanciaC`
 
-3. Una vez se hayan descargado los microservicios correspondientes para cada instancia, se debe navegar hasta la carpeta de cada microservicio, y una vez estando a la misma altura que los archivos docker-compose.yml, se debe ejecutar el comando docker compose up -d.
+3. Una vez se hayan descargado los microservicios correspondientes para cada instancia, se debe navegar hasta la carpeta de cada microservicio, y una vez estando a la misma altura que los archivos docker-compose.yml, se debe ejecutar el comando docker compose up -d. (se debe tener la dependencia de docker-compose en la instancia, de lo contrario el comando no funcionará).
+  3a. para poder ejecutar el comando de docker compose, se debe instalar la dependencia y configurar permisos previamente con estos comandos:
+   
+  instalar: `sudo apt install docker.io docker-compose-v2 -y`
+  
+  permisos de usuario: `sudo usermod -aG docker ubuntu`
+  
 
-4. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
+5. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
 
 (EXTRA) En caso de desear tener todos los microservicios en una única instancia, se deberán configurar los puertos para ser usados de este modo, debido a que este proyecto se desarrolló en torno a 3 instancias con los microservicios repartidos dentro de estas.
 
