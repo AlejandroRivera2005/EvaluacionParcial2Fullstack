@@ -31,10 +31,9 @@ Instancia B EC2 de Tomás Gaete
 Instancia C EC2 de Félix Rojas
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
-| Autentificador | 8080   | 3306     | inicio de sesión      |
+| usuarios       | 8080   | 3306     | Autentificación       |
 | inventario     | 8081   | 3307     | Gestor de inventario  |
 | Oferta turismo | 8082   | 3308     | Ofertas de turismo    |
-| Notificaciones | 8083   | 3309     | Notificaciones app    |
 
 
 ## Despliegue Técnico
@@ -58,8 +57,10 @@ Instancia C EC2 de Félix Rojas
 Una vez estén los microservicios ejecutándose, se podrán realizar los métodos CRUD en cada uno de estos sin ningún problema.
 
 ## Conexión FEIGN
-En este proyecto, la única comunicación entre microservicios necesaria fue `autentificacion-checkin/out`, comunica a las instancias C y B a través de estos 2 microservicios. 
+En este proyecto, la única comunicación entre microservicios necesaria fue `usuarios-checkin/out`, comunica a las instancias C y B a través de estos 2 microservicios. 
 
+## Distribución de Commits
+Este repositorio indica a Alejandro Rivera como único colaborador, esto se debe a que este integrante se ofreció voluntario para configurarlo. Sin embargo, como se aclaró al comienzo de este README, los aportes al código están distribuidos tal como lo dice el **Mapa de las instancias con sus microservicios.** Siendo cada dueño de las instancias el responsable de los microservicios dentro su propio servidor.
 
 
 
