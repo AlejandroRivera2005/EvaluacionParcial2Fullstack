@@ -31,9 +31,10 @@ Instancia B EC2 de Tomás Gaete
 Instancia C EC2 de Félix Rojas
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
-| usuarios       | 8080   | 3306     | Autentificación       |
-| inventario     | 8081   | 3307     | Gestor de inventario  |
-| Oferta turismo | 8082   | 3308     | Ofertas de turismo    |
+| Oferta turismo | 8080   | 3308     | Ofertas de turismo    |
+| usuarios       | 8081   | 3307     | Autentificación       |
+| inventario     | 8082   | 3306     | Gestor de inventario  |
+
 
 
 ## Despliegue Técnico
