@@ -1,6 +1,8 @@
 Proyecto de evaluación parcial 2 para **Desarrollo FullStack 1 (DSY1103) — Duoc UC 2026**.
 
-Contiene un total de 11 microservicios, de los cuales (`ms-productos` y `ms-pedidos`) se comunican de forma sincrona mediante **Feign Client**, los restantes no necesitan información de sus pares para funcionar. Los 11 contenedores con cada microservicio están repartidos en 3 instancias EC2 (una de cada integrante) y para hacerlos funcionar hay que ejecutar el comando "docker compose up -d" una vez por cada contenedor. 
+Esta es una aplicación con arquitectura de microservicios orientada a hoteles, que digitaliza y vuelve más fácil muchas de las funciones que realizan este tipo de negocios.
+
+Contiene un total de 10 microservicios, de los cuales (`checkin/out` y `autentificacion`) se comunican de forma sincrona mediante **Feign Client**, los restantes no necesitan información de sus pares para funcionar. Los 10 contenedores con cada microservicio están repartidos en 3 instancias EC2 (una de cada integrante) y para hacerlos funcionar hay que ejecutar el comando "docker compose up -d" una vez por cada contenedor. 
 
 
 ## Integrantes
@@ -9,14 +11,16 @@ Contiene un total de 11 microservicios, de los cuales (`ms-productos` y `ms-pedi
 - Tomás Gaete
 
 ## Mapa de las instancias con sus microservicios
-Instancia EC2 de Alejandro Rivera
+En este apartado hay un mapa de las 3 instancias, indicando los microservicios que poseen, sus respectivos puertos y una explicación breve de sus funciones.
+
+Instancia A EC2 de Alejandro Rivera
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
 | Soporte        | 8080   | 3306     | Soporte técnico       |
 | Pagos          | 8081   | 3307     | Métodos de pago       |
 | Ofertastrabajo | 8082   | 3308     | Ofertas laborales     |
 
-Instancia EC2 de Tomás Gaete
+Instancia B EC2 de Tomás Gaete
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
 | Check in/out   | 8080   | 3306     | Check in/out          |
@@ -24,7 +28,7 @@ Instancia EC2 de Tomás Gaete
 | Catálogo       | 8082   | 3308     | Catálogo app          |
 | Notificaciones | 8083   | 3309     | Notificaciones app    |
 
-Instancia EC2 de Félix Rojas
+Instancia C EC2 de Félix Rojas
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
 | Autentificador | 8080   | 3306     | inicio de sesión      |
@@ -49,9 +53,12 @@ Instancia EC2 de Félix Rojas
 
 4. Cuando estén todos los dockers creados correctamente, bastará con ejecutar las aplicaciones de Springboot por medio del Main de cada microservicio.
 
-(EXTRA) En caso de desear tener todos los microservicios en una única instancia, se deberán configurar los puertos, porque este proyecto se desarrolló en torno a 3 instancias con los microservicios repartidos dentro de estas.
+(EXTRA) En caso de desear tener todos los microservicios en una única instancia, se deberán configurar los puertos para ser usados de este modo, debido a que este proyecto se desarrolló en torno a 3 instancias con los microservicios repartidos dentro de estas.
 
 Una vez estén los microservicios ejecutándose, se podrán realizar los métodos CRUD en cada uno de estos sin ningún problema.
+
+## Conexión FEIGN
+En este proyecto, la única comunicación entre microservicios necesaria fue `autentificacion-checkin/out`, comunica a las instancias C y B a través de estos 2 microservicios. 
 
 
 
