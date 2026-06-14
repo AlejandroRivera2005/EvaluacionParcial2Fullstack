@@ -12,4 +12,5 @@ public class BackendCheckInService {
 
 }
 //./mvnw spring-boot:run
-//http://IP:8080
+//http://50.16.98.226:8080
+//http://50.16.98.226:8080/doc/swagger-ui.html
