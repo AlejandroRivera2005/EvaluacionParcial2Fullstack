@@ -23,7 +23,7 @@ public class Catalogo {
     private Long id;
     
     // Columnas normales de la tabla
-    private String numeroHabitacion;
+    private int numeroHabitacion;
     private String tipoHabitacion;
     private String serviciosHabitacion;
 }
