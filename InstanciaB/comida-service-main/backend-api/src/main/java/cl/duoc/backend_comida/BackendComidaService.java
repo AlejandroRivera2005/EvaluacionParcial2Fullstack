@@ -12,4 +12,5 @@ public class BackendComidaService {
 
 }
 //./mvnw spring-boot:run
-//http://IP:8081
+//http:50.16.98.226:8081
+//http:50.16.98.226:8081/doc/swagger-ui.html
