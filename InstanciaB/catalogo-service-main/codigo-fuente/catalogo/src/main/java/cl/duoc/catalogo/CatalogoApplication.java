@@ -12,3 +12,4 @@ public class CatalogoApplication {
 
 }
 //http://50.16.98.226:8082
+//http://50.16.98.226:8082/doc/swagger-ui.html
