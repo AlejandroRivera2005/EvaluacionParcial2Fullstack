@@ -72,5 +72,12 @@ En este proyecto, la única comunicación entre microservicios necesaria fue `us
 ## Distribución de Commits
 Este repositorio indica a Alejandro Rivera como único colaborador, esto se debe a que este integrante se ofreció voluntario para configurarlo. Sin embargo, como se aclaró al comienzo de este README, los aportes al código están distribuidos tal como lo dice el **Mapa de las instancias con sus microservicios.** Siendo cada dueño de las instancias el responsable de los microservicios dentro su propio servidor.
 
+## Swagger UI
+Instancia C:
+http://54.167.72.25t:8081/doc/swagger-ui.html (Usuarios)
+http://54.167.72.25t:8082/doc/swagger-ui.html (Inventario)
+http://54.167.72.25t:8080/doc/swagger-ui.html (OfertaTurismo)
+
+
 
 
