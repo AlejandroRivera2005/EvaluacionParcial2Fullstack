@@ -4,7 +4,7 @@ services:
   # -----------------------------------------------------------
   db-servicio:
     image: mysql:8.0
-    container_name: mysql_servidor2
+    container_name: mysql_servidor4
     environment:
       MYSQL_ROOT_PASSWORD: clave_maestra_root
       MYSQL_DATABASE: universidad_backend
@@ -22,7 +22,7 @@ services:
   # -----------------------------------------------------------
   workspace-java:
     image: maven:3.9-eclipse-temurin-21
-    container_name: entorno_programacion2
+    container_name: entorno_programacion4
     ports:
       - "8082:8082"
     depends_on:

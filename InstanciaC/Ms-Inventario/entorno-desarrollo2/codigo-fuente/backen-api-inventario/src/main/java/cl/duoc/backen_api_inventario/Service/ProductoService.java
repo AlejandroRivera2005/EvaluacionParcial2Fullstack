@@ -3,16 +3,19 @@ import cl.duoc.backen_api_inventario.Dto.ProductoCreateDto;
 import cl.duoc.backen_api_inventario.Dto.ProductoDto;
 import cl.duoc.backen_api_inventario.Model.Producto;
 import cl.duoc.backen_api_inventario.Repository.ProductoRepository;
+import cl.duoc.backen_api_inventario.exception.RecursoNoEncontradoException;
+
 import java.util.List;
 import java.util.stream.Collectors;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
 public class ProductoService {
-
+    private static final Logger log = LoggerFactory.getLogger(ProductoService.class);
     private final ProductoRepository productoRepository;
 
     public ProductoService(ProductoRepository productoRepository) {
@@ -29,6 +32,18 @@ public class ProductoService {
         producto.setPrecio(dto.getPrecio());
 
         Producto guardado = productoRepository.save(producto);
+        return entidadADto(guardado);
+    }
+    
+    public ProductoDto crear(ProductoCreateDto dto) {
+        log.info("Creando producto nombre={}", dto.getNombre());
+        Producto p = new Producto();
+        p.setNombre(dto.getNombre());
+        p.setCodigo(dto.getCodigo());
+        p.setPrecio(dto.getPrecio());
+        p.setStock(dto.getStock());
+        Producto guardado = productoRepository.save(p);
+        log.info("Producto creado id={}", guardado.getId());
         return entidadADto(guardado);
     }
 
@@ -94,5 +109,17 @@ public class ProductoService {
         }
         return errores;
     }
-    
+     public List<ProductoDto> findAll() {
+        log.info("Consultando todos los productos");
+        return productoRepository.findAll().stream()
+                .map(this::entidadADto)
+                .collect(Collectors.toList());
+    }
+      public ProductoDto findById(Long id) {
+        log.info("Buscando producto id={}", id);
+        Producto p = productoRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Producto no encontrado: " + id));
+        log.info("Producto encontrado: nombre={}, precio={}", p.getNombre(), p.getPrecio());
+        return entidadADto(p);
+    }
 }
