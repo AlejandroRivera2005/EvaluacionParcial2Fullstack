@@ -74,14 +74,18 @@ Este repositorio indica a Alejandro Rivera como único colaborador, esto se debe
 
 ## Swagger UI
 Instancia A:
-Soporte: http://35.168.92.208:8080/doc/swagger-ui/index.html
-Pagos: http://35.168.92.208:8081/doc/swagger-ui/index.html
-OfertasTrabajo: http://35.168.92.208:8082/doc/swagger-ui/index.html
+1. Soporte: http://35.168.92.208:8080/doc/swagger-ui/index.html
+
+2. Pagos: http://35.168.92.208:8081/doc/swagger-ui/index.html
+
+3. OfertasTrabajo: http://35.168.92.208:8082/doc/swagger-ui/index.html
 
 Instancia C:
-Usuarios: http://54.167.72.25t:8081/doc/swagger-ui.html 
-Inventario: http://54.167.72.25t:8082/doc/swagger-ui.html 
-OfertaTurismo: http://54.167.72.25t:8080/doc/swagger-ui.html
+1. Usuarios: http://54.167.72.25t:8081/doc/swagger-ui.html 
+
+2. Inventario: http://54.167.72.25t:8082/doc/swagger-ui.html
+   
+3. OfertaTurismo: http://54.167.72.25t:8080/doc/swagger-ui.html
 
 
 
