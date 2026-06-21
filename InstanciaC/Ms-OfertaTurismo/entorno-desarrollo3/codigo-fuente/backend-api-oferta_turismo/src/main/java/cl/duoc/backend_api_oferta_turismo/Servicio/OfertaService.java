@@ -1,18 +1,20 @@
 package cl.duoc.backend_api_oferta_turismo.Servicio;
 import cl.duoc.backend_api_oferta_turismo.Dto.OfertaCreateDto;
 import cl.duoc.backend_api_oferta_turismo.Dto.OfertaDto;
+import cl.duoc.backend_api_oferta_turismo.Exception.RecursoNoEncontradoException;
 import cl.duoc.backend_api_oferta_turismo.Modelo.Oferta;
 import cl.duoc.backend_api_oferta_turismo.Repositorio.OfertaRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Service
 public class OfertaService {
 
+     private static final Logger log = LoggerFactory.getLogger(OfertaService.class);
 
    @Autowired
     private OfertaRepository ofertaRepository;
@@ -21,10 +23,13 @@ public class OfertaService {
     public OfertaService(OfertaRepository ofertaRepository) {
         this.ofertaRepository = ofertaRepository;
     }
-
-    public Optional<Oferta> findById(Long id) {
-        return ofertaRepository.findById(id);
+     public List<OfertaDto> findAll() {
+        log.info("Consultando todos los productos");
+        return ofertaRepository.findAll().stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
+ 
 
     // Buscar y convertir a DTO
     public OfertaDto findDtoById(Long id) {
@@ -36,6 +41,13 @@ public class OfertaService {
                 oferta.getPrecio()
             );
         }).orElse(null);
+    }
+        public OfertaDto findById(Long id) {
+        log.info("Buscando oferta id={}", id);
+        Oferta o = ofertaRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Oferta no encontrada: " + id));
+        log.info("Oferta encontrada: nombre={}, precio={}", o.getNombreOferta(), o.getPrecio());
+        return toDTO(o);
     }
 
     // Registro de nueva oferta usando DTO
@@ -113,4 +125,16 @@ public class OfertaService {
         }
         return false;
     }
+
+        private OfertaDto toDTO(Oferta o) {
+        return new OfertaDto(
+                o.getId(),
+                o.getNombreOferta(),
+                o.getDescripcion(),
+                o.getPrecio()
+        );
+    }
 }
+
+              
+ 
