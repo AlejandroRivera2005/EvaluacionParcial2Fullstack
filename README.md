@@ -80,6 +80,13 @@ Instancia A:
 
 3. OfertasTrabajo: http://35.168.92.208:8082/doc/swagger-ui/index.html
 
+Instancia B:
+1. Check In/Out: http://50.16.98.226:8080/doc/swagger-ui.html
+
+2. Comida: http://50.16.98.226:8081/doc/swagger-ui.html
+
+3. Catalogo: http://50.16.98.226:8082/doc/swagger-ui.html
+
 Instancia C:
 1. Usuarios: http://54.167.72.25t:8081/doc/swagger-ui.html 
 
