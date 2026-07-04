@@ -102,8 +102,11 @@ Instancia C:
 Los microservicios seleccionados para la implementación de Eureka y API Gateway son todos los de la Instancia A. Por lo que el mapeo de links para cada microservicio es así:
 
   -EUREKA: http://35.168.92.208:8761/
+  
   -SOPORTE: http://35.168.92.208:8080/api/soporte
+  
   -PAGOS: http://35.168.92.208:8080/api/pagos
+  
   -TRABAJOS: http://35.168.92.208:8080/api/trabajos
 
 
