@@ -1,0 +1,36 @@
+server:
+  port: 8083                   # Puerto público del Gateway
+
+spring:
+  application:
+    name: ms-gateway
+  cloud:
+    gateway:
+      routes:                   # Lista de reglas de enrutamiento
+
+        # ── Ruta para ms-soporte ─────────────────────────────────────
+        - id: soporte-route
+          uri: lb://MS-SOPORTE    # lb:// activa balanceo con Eureka
+          predicates:
+            - Path=/api/soporte/**  # ** captura cualquier subpath
+
+        # ── Ruta para ms-pagos ───────────────────────────────────────
+        - id: pagos-route
+          uri: lb://MS-PAGOS
+          predicates:
+            - Path=/api/pagos/**
+
+        # ── Ruta para ms-trabajos ───────────────────────────────────────
+        - id: trabajos-route
+          uri: lb://MS-TRABAJOS
+          predicates:
+            - Path=/api/trabajos/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG  # Útil para depurar rutas

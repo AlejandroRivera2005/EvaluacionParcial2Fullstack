@@ -1,0 +1,162 @@
+services:
+
+  db-soporte:
+    image: mysql:8.0
+    container_name: db-soporte
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_soporte
+    volumes:
+      - vol-db-soporte:/var/lib/mysql
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-pagos:
+    image: mysql:8.0
+    container_name: db-pagos
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_pagos
+    volumes:
+      - vol-db-pagos:/var/lib/mysql
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-trabajos:
+    image: mysql:8.0
+    container_name: db-trabajos
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_trabajos
+    volumes:
+      - vol-db-trabajos:/var/lib/mysql
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  ms-eureka:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-eureka
+    ports:
+      - "8761:8761"
+    working_dir: /app
+    volumes:
+      - ./ms-eureka:/app
+      - maven-cache:/root/.m2
+      - target-eureka:/app/target
+    entrypoint: ["tail", "-f", "/dev/null"] # <--- Mantiene el contenedor vivo sin hacer nada
+    networks:
+      - backend-net
+
+  ms-soporte:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-soporte
+    ports:
+      - "8083:8083"
+    working_dir: /app
+    volumes:
+      - ./Ms-soporteSwaggerTests:/app
+      - maven-cache:/root/.m2
+      - target-soporte:/app/target
+    entrypoint: ["tail", "-f", "/dev/null"] # <--- Mantiene el contenedor vivo sin hacer nada
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-soporte:3306/db_soporte?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ms-eureka:8761/eureka/
+    depends_on:
+      db-soporte:
+        condition: service_healthy
+    networks:
+      - backend-net
+
+  ms-pagos:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-pagos
+    ports:
+      - "8081:8081"
+    working_dir: /app
+    volumes:
+      - ./Ms-pagosSwaggerTests:/app
+      - maven-cache:/root/.m2
+      - target-pagos:/app/target
+    entrypoint: ["tail", "-f", "/dev/null"]
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-pagos:3306/db_pagos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ms-eureka:8761/eureka/
+    depends_on:
+      db-pagos:
+        condition: service_healthy
+    networks:
+      - backend-net
+
+  ms-trabajos:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-trabajos
+    ports:
+      - "8082:8082"
+    working_dir: /app
+    volumes:
+      - ./Ms-trabajosSwaggerTests:/app
+      - maven-cache:/root/.m2
+      - target-trabajos:/app/target
+    entrypoint: ["tail", "-f", "/dev/null"]
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-trabajos:3306/db_trabajos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ms-eureka:8761/eureka/
+    depends_on:
+      db-trabajos:
+        condition: service_healthy
+    networks:
+      - backend-net
+
+  ms-apigateway:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-apigateway
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    volumes:
+      - ./ms-apigateway:/app
+      - maven-cache:/root/.m2
+      - target-gateway:/app/target
+    entrypoint: ["tail", "-f", "/dev/null"]
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://ms-eureka:8761/eureka/
+    networks:
+      - backend-net
+
+
+volumes:
+  vol-db-soporte:
+  vol-db-pagos:
+  vol-db-trabajos:
+  maven-cache:
+  target-eureka:
+  target-soporte:
+  target-pagos:
+  target-trabajos:
+  target-gateway:
+
+networks:
+  backend-net:
+    driver: bridge
