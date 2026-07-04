@@ -1,4 +1,4 @@
-Proyecto de evaluación parcial 2 para **Desarrollo FullStack 1 (DSY1103) — Duoc UC 2026**.
+Proyecto de evaluación transversal para **Desarrollo FullStack 1 (DSY1103) — Duoc UC 2026**.
 
 Esta es una aplicación con arquitectura de microservicios orientada a hoteles, que digitaliza y vuelve más fácil muchas de las funciones que realizan este tipo de negocios.
 
@@ -16,9 +16,11 @@ En este apartado hay un mapa de las 3 instancias, indicando los microservicios q
 Instancia A EC2 de Alejandro Rivera
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
 | :------------- | :----- | :------- | :-------------------- |
-| Soporte        | 8080   | 3306     | Soporte técnico       |
+| API gateway    | 8080   | XXXX     | API Gateway           |
+| Eureka         | 8761   | XXXX     | Eureka                |
 | Pagos          | 8081   | 3307     | Métodos de pago       |
 | Ofertastrabajo | 8082   | 3308     | Ofertas laborales     |
+| Soporte        | 8083   | 3306     | Soporte técnico       |
 
 Instancia B EC2 de Tomás Gaete
 | Microservicio  | Puerto | DB puerto| Funcionalidad (cruds) |
@@ -51,6 +53,8 @@ Instancia C EC2 de Félix Rojas
 - Instancia C: `git clone --depth 1 --sparse --filter=blob:none https://github.com/AlejandroRivera2005/EvaluacionParcial2Fullstack.git && cd EvaluacionParcial2Fullstack && git sparse-checkout set InstanciaC`
 
 3. Una vez se hayan descargado los microservicios correspondientes para cada instancia, se debe navegar hasta la carpeta de cada microservicio, y una vez estando a la misma altura que los archivos docker-compose.yml, se debe ejecutar el comando docker compose up -d. (se debe tener la dependencia de docker-compose en la instancia, de lo contrario el comando no funcionará).
+
+INSTANCIA A: Esta instancia utiliza un sólo archivo docker-compose.yml con todo lo necesario para sus 5 microservicios, por lo que sólo se deberá ejecutar el comando una sola vez. (El motivo del cambio fue problemas de redes relacionados a API Gateway.)
 
 
 3a. para poder ejecutar el comando de docker compose, se debe instalar la dependencia y configurar permisos previamente con estos comandos:
@@ -93,6 +97,14 @@ Instancia C:
 2. Inventario: http://54.167.72.25t:8082/doc/swagger-ui.html
    
 3. OfertaTurismo: http://54.167.72.25t:8080/doc/swagger-ui.html
+
+## API Gateway
+Los microservicios seleccionados para la implementación de Eureka y API Gateway son todos los de la Instancia A. Por lo que el mapeo de links para cada microservicio es así:
+
+  -EUREKA: http://35.168.92.208:8761/
+  -SOPORTE: http://35.168.92.208:8080/api/soporte
+  -PAGOS: http://35.168.92.208:8080/api/pagos
+  -TRABAJOS: http://35.168.92.208:8080/api/trabajos
 
 
 
