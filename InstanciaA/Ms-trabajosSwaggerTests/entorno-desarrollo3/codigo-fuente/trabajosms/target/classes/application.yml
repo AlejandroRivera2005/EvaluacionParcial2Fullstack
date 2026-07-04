@@ -1,0 +1,35 @@
+server:
+  port: 8082
+
+
+spring:
+  application:
+    name: MS-TRABAJOS
+  datasource:
+    url: jdbc:mysql://mysql_servidor3:3306/universidad_backend?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: desarrollador
+    password: password_seguro_123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  web:
+    error:
+      include-binding-errors: always
+      include-message: always
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+
+eureka:                    # ← Sección nueva a agregar
+  client:
+    service-url:
+      defaultZone: http://ms-eureka:8761/eureka/
+  instance:
+    prefer-ip-address: true  # Registra la IP en lugar del hostname
