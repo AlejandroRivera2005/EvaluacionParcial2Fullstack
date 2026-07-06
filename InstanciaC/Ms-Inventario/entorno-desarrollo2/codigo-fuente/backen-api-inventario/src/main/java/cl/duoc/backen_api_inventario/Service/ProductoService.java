@@ -34,6 +34,13 @@ public class ProductoService {
         Producto guardado = productoRepository.save(producto);
         return entidadADto(guardado);
     }
+       public ProductoDto findById(Long id) {
+        log.info("Buscando producto id={}", id);
+        Producto p = productoRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Producto no encontrado: " + id));
+        log.info("Producto encontrado: nombre={}, precio={}", p.getNombre(), p.getPrecio());
+        return entidadADto(p);
+    }
     
     public ProductoDto crear(ProductoCreateDto dto) {
         log.info("Creando producto nombre={}", dto.getNombre());
@@ -114,12 +121,6 @@ public class ProductoService {
         return productoRepository.findAll().stream()
                 .map(this::entidadADto)
                 .collect(Collectors.toList());
-    }
-      public ProductoDto findById(Long id) {
-        log.info("Buscando producto id={}", id);
-        Producto p = productoRepository.findById(id)
-                .orElseThrow(() -> new RecursoNoEncontradoException("Producto no encontrado: " + id));
-        log.info("Producto encontrado: nombre={}, precio={}", p.getNombre(), p.getPrecio());
-        return entidadADto(p);
-    }
+
+}
 }

@@ -41,6 +41,17 @@ public class ProductoController {
     public ResponseEntity<List<ProductoDto>> listarProductos() {
         return new ResponseEntity<>(productoService.obtenerTodosDto(), HttpStatus.OK);
     }
+    @Operation(summary = "Buscar producto", description = "Obtiene un producto específico del inventario")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Producto encontrado"),
+        @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductoDto> buscarPorId(@PathVariable Long id) {
+   
+        ProductoDto producto = productoService.findById(id);
+        return new ResponseEntity<>(producto, HttpStatus.OK);
+    }
 
     @Operation(summary = "Registrar producto", description = "Crea un nuevo producto en el inventario")
     @ApiResponses(value = {
